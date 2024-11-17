@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生日驚喜網站</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #2e2b2b;
+      color: #e3d5ca;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #d4af37;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #d4af37;
+    }
+    button {
+      background-color: #5a4635;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+    button:hover {
+      background-color: #d4af37;
+      color: #2e2b2b;
+    }
+    .hidden {
+      display: none;
+    }
+    .magic-text {
+      font-style: italic;
+      color: #d4af37;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>歡迎來到神秘的生日驚喜！</h1>
+    <p class="magic-text">這是一個充滿魔法的小冒險，準備好接受挑戰了嗎？</p>
+    <button onclick="startGame()">開始冒險</button>
+
+    <div id="stage1" class="hidden">
+      <h2>關卡 1：解開咒語</h2>
+      <p>請輸入魔法密語：<em>“生日快樂”</em></p>
+      <input type="text" id="magicWord" placeholder="輸入密語">
+      <button onclick="checkMagicWord()">提交</button>
+      <p id="hint1" class="hidden">提示：試試用中文！</p>
+    </div>
+
+    <div id="stage2" class="hidden">
+      <h2>關卡 2：尋找隱藏的信息</h2>
+      <p>點擊下方圖片，找到生日驚喜的線索。</p>
+      <img src="https://via.placeholder.com/300x200" alt="神秘圖片" onclick="revealSurprise()">
+      <p id="hint2" class="hidden">你找到驚喜了！繼續前往最後的祝福！</p>
+    </div>
+
+    <div id="finalStage" class="hidden">
+      <h2>祝福</h2>
+      <p>恭喜完成挑戰！這是專屬於你的生日驚喜：</p>
+      <p class="magic-text">「生日快樂！願你的每一天都如今天般充滿驚喜與魔法！」</p>
+    </div>
+  </div>
+
+  <script>
+    function startGame() {
+      document.querySelector("button").classList.add("hidden");
+      document.getElementById("stage1").classList.remove("hidden");
+    }
+
+    function checkMagicWord() {
+      const word = document.getElementById("magicWord").value.trim();
+      if (word === "生日快樂") {
+        document.getElementById("stage1").classList.add("hidden");
+        document.getElementById("stage2").classList.remove("hidden");
+      } else {
+        document.getElementById("hint1").classList.remove("hidden");
+      }
+    }
+
+    function revealSurprise() {
+      document.getElementById("stage2").classList.add("hidden");
+      document.getElementById("finalStage").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
